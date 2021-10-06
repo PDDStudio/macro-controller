@@ -1,7 +1,0 @@
-{
-  "hooks": {
-    "pre-commit": "lint-staged",
-    "pre-publish": "lint-staged",
-    "pre-push": "lint-staged"
-  }
-}
