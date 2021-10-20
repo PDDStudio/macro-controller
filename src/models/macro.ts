@@ -11,8 +11,9 @@ export type MouseClick = 'single' | 'double'
 
 // Important: Adding more supported keys also requires updating the validation check in [MacroValidationHelper]
 export type Key = 'backspace' | 'delete' | 'enter' | 'tab' | 'escape' | 'up' | 'down' | 'left' | 'right' |
-                  'home' | 'end' | 'pageup' | 'pagedown' | 'alt' | 'shift' | 'control' | 'printscreen' | 'space' |
-                  'shift' | 'right_shift'
+                  'home' | 'end' | 'pageup' | 'pagedown' | 'printscreen' | 'space' |
+                  'f1' | 'f2' | 'f3' | 'f4' | 'f5' | 'f6' | 'f7' | 'f8' | 'f9' | 'f10' |
+                  'f11' | 'f12' | 'command' | 'alt' | 'control' | 'shift' | 'right_shift'
 
 export interface Macro {
   name: string
