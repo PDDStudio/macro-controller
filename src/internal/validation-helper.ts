@@ -37,6 +37,7 @@ export class MacroValidationHelper {
     if (!keyboardKey) {
       return false
     }
+    
     switch (keyboardKey) {
       case 'alt':
       case 'backspace':
@@ -57,6 +58,19 @@ export class MacroValidationHelper {
       case 'space':
       case 'tab':
       case 'up':
+      case 'f1':
+      case 'f2':
+      case 'f3':
+      case 'f4':
+      case 'f5':
+      case 'f6':
+      case 'f7':
+      case 'f8':
+      case 'f9':
+      case 'f10':
+      case 'f11':
+      case 'f12':
+      case 'command':
         return true
       default:
         return false
