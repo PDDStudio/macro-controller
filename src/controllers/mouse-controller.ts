@@ -1,6 +1,6 @@
 import robot from 'robotjs'
 import { createLogger, Logger } from '../utils'
-import { MouseCoordinates, TargetLocation, MouseButton, MouseClick } from '../models'
+import { TargetLocation, MouseButton, MouseClick } from '../models'
 
 export class MouseController {
 
@@ -27,7 +27,7 @@ export class MouseController {
     this.logger.info('moveAround: Finished movement!')
   }
 
-  public getCurrentPosition(): MouseCoordinates {
+  public getCurrentPosition(): TargetLocation {
     return robot.getMousePos()
   }
 
