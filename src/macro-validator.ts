@@ -3,7 +3,8 @@ import { Action, KeyboardAction, Macro, MouseAction } from "./models";
 class MacroValidator {
 
   validateMacro(macro: Macro) {
-    macro.actions
+    macro.actions.forEach((action) => this.validateAction(action))
+    this.validateRepeatCount(macro.repeat)
   }
 
   private validateAction(action: Action) {
@@ -20,6 +21,14 @@ class MacroValidator {
 
   private validateKeyboardAction(keyboardAction: KeyboardAction) {
     // TODO
+  }
+
+  private validateRepeatCount(value: number | string) {
+    if (typeof value == 'number') {
+      return true
+    } else {
+      return /^\d+$/.test(value)
+    }
   }
 
 }
