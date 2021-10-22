@@ -1,4 +1,5 @@
-import { Action, KeyboardAction, Macro, MouseAction, MouseButton, TargetLocation } from "./models";
+import { MacroValidationHelper } from "./internal";
+import { Action, Key, KeyboardAction, KeyboardActionType, Macro, MouseAction, MouseButton, TargetLocation } from "./models";
 
 class MacroValidationError extends Error {
   private error: String
@@ -14,6 +15,8 @@ class MacroValidationError extends Error {
 }
 
 class MacroValidator {
+
+  private readonly validationHelper: MacroValidationHelper = new MacroValidationHelper()
 
   validateMacro(macro: Macro) {
     macro.actions.forEach((action) => this.validateAction(action))
@@ -68,7 +71,34 @@ class MacroValidator {
   }
 
   private validateKeyboardAction(keyboardAction: KeyboardAction) {
-    // TODO
+    if (!keyboardAction.action) {
+      throw new MacroValidationError('Missing required keyboard action type!')
+    }
+    this.validateKeyboardActionType(keyboardAction.action)
+
+    if (keyboardAction.action == 'key') {
+      if(!keyboardAction.key) {
+        throw new MacroValidationError('Missing required property: key')
+      }
+
+      const validKey = this.validationHelper.isValidKeyboardKey(keyboardAction.key)
+      if (!validKey) {
+        throw new MacroValidationError('Invalid key specified!')
+      }
+
+    } else {
+      const validText = this.validationHelper.isValidText(keyboardAction.text)
+      if (!validText) {
+        throw new MacroValidationError('Invalid text specified!')
+      }
+    }
+
+  }
+
+  private validateKeyboardActionType(action: KeyboardActionType) {
+    if (action !== 'key' && action != 'text') {
+      throw new MacroValidationError('Invalid keyboard action type. Must be key or text.')
+    }
   }
 
   private validateRepeatCount(value: number | string) {
