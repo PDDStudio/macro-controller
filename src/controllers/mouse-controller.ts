@@ -2,6 +2,10 @@ import robot from 'robotjs'
 import { createLogger, Logger } from '../utils'
 import { TargetLocation, MouseButton, MouseClick } from '../models'
 
+/**
+ * The MouseController is the main class to handle requested mouse input.
+ * It can move the mouse, but also click mouse buttons.
+ */
 export class MouseController {
 
   private readonly logger: Logger
@@ -27,10 +31,20 @@ export class MouseController {
     this.logger.info('moveAround: Finished movement!')
   }
 
+  /**
+   * Get the current position of the mouse cursor.
+   * 
+   * @returns The current position as [TargetLocation]
+   */
   public getCurrentPosition(): TargetLocation {
     return robot.getMousePos()
   }
 
+  /**
+   * Function to trigger a mouse move event
+   * @param location The target location the mouse should be moved to
+   * @param smooth  Whether the move animation should be smooth or instant
+   */
   public move(location: TargetLocation, smooth: boolean = true) {
     if(smooth) {
       robot.moveMouseSmooth(location.x, location.y)
@@ -39,6 +53,13 @@ export class MouseController {
     }
   }
 
+  /**
+   * Function to trigger a mouse click
+   * @param location The target location where the mouse click should happen
+   * @param button The target mouse button which should be pressed
+   * @param clickType The target click type. Can be single or double
+   * @param smooth Whether the click animation should be executed smoothly or instant
+   */
   public click(location: TargetLocation, button: MouseButton, clickType: MouseClick, smooth: boolean) {
     this.move(location, smooth)
     robot.mouseClick(button, clickType === 'double')
