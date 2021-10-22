@@ -1,5 +1,5 @@
 {
-  "name": "@cfwest/macro-controller",
+  "name": "macro-controller",
   "description": "An experimental macro interpretation module",
   "version": "0.0.3",
   "license": "MIT",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cfna/macro-controller"
+    "url": "https://github.com/pddstudio/macro-controller"
   },
   "private": false,
   "publishConfig": {
