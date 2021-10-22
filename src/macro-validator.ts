@@ -1,7 +1,7 @@
 import { MacroValidationHelper } from "./internal";
 import { Action, Key, KeyboardAction, KeyboardActionType, Macro, MouseAction, MouseButton, TargetLocation } from "./models";
 
-class MacroValidationError extends Error {
+export class MacroValidationError extends Error {
   private error: String
 
   constructor(message: String) {
@@ -14,7 +14,7 @@ class MacroValidationError extends Error {
   }
 }
 
-class MacroValidator {
+export class MacroValidator {
 
   private readonly validationHelper: MacroValidationHelper = new MacroValidationHelper()
 
