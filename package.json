@@ -20,22 +20,22 @@
     "macro-controller": "bin/cli.js"
   },
   "scripts": {
-    "prebuild": "yarn clean",
-    "prebuild:native:win": "yarn build",
-    "prebuild:native:mac": "yarn build",
-    "prebuild:native:linux": "yarn build",
-    "build": "yarn compile",
+    "prebuild": "npm run clean",
+    "prebuild:native:win": "npm run build",
+    "prebuild:native:mac": "npm run build",
+    "prebuild:native:linux": "npm run build",
+    "build": "npm run compile",
     "build:native:win": "pkg . --target node14-win-x64 --out-path build",
     "build:native:mac": "pkg . --target node14-macos-x64 --out-path build",
     "build:native:linux": "pkg . --target node14-linux-x64 --out-path build",
     "clean": "rimraf dist",
     "compile": "tsc",
-    "pretest": "yarn build",
+    "pretest": "npm run build",
     "test": "jest",
-    "prerun:macro": "yarn build",
+    "prerun:macro": "npm run build",
     "run:macro": "node bin/cli.js",
     "run:debug": "ts-node src/run.ts",
-    "prerelease": "yarn build",
+    "prerelease": "npm run build",
     "release": "release-it",
     "postinstall": "husky install"
   },
@@ -76,7 +76,7 @@
   },
   "lint-staged": {
     "src/**/*.ts": [
-      "yarn lint",
+      "npm run lint",
       "prettier --parser typescript --write"
     ]
   }
