@@ -1,20 +1,20 @@
 import { MacroValidationHelper } from "./internal";
-import { Action, Key, KeyboardAction, KeyboardActionType, Macro, MouseAction, MouseButton, TargetLocation } from "./models";
+import { Action, KeyboardAction, KeyboardActionType, Macro, MouseAction, MouseButton, TargetLocation } from "./models";
 
 class MacroValidationError extends Error {
-  private error: String
+  private error: string
 
-  constructor(message: String) {
+  constructor(message: string) {
     super()
     this.error = message
   }
 
-  public getError(): String {
+  public getError(): string {
     return this.error
   }
 }
 
-class MacroValidator {
+export class MacroValidator {
 
   private readonly validationHelper: MacroValidationHelper = new MacroValidationHelper()
 
@@ -24,7 +24,7 @@ class MacroValidator {
   }
 
   private validateAction(action: Action) {
-    if (action.hasOwnProperty('key')) {
+    if (Object.hasOwnProperty.call(action, 'key')) {
       this.validateMouseAction(action as MouseAction)
     } else {
       this.validateKeyboardAction(action as KeyboardAction)

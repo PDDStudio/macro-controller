@@ -15,7 +15,7 @@ const tmpDir = path.join(process.cwd(), '.tmp')
 const defaultSaveOptions = {
   prefix: true
 };
-const defaultCallback = (name: string, error?: any) => {
+const defaultCallback = (name: string, error?: Error) => {
   if(error) {
     logger.error(error)
   }
@@ -34,14 +34,14 @@ function appendPrefix(name: string): string {
   return `${prefix}_${name}`
 }
 
-export async function saveTemporary(fileName: string, data: any, opts: SaveOptions = defaultSaveOptions, cb: DebugCallback = defaultCallback): Promise<void> {
+export async function saveTemporary<T>(fileName: string, data: T, opts: SaveOptions = defaultSaveOptions, cb: DebugCallback = defaultCallback): Promise<void> {
   await ensureTmpDir()
   const targetFile = opts.prefix ? appendPrefix(fileName) : fileName
   const target = path.join(tmpDir, targetFile)
   logger.debug(`Saving Temporary File to: ${target}`)
   // await screenCaptureToFile(target);
   const ws: WriteStream = fs.createWriteStream(target)
-  await ws.write(data, (err) => {
+  ws.write(data, (err) => {
     if(err) {
       cb(target, err)
     }

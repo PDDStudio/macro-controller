@@ -162,7 +162,7 @@ export class MacroExecutor {
     }
   }
 
-  private handleMouseClick(location: TargetLocation, button: MouseButton = 'left', clickType: MouseClick = 'single', smooth: boolean = true) {
+  private handleMouseClick(location: TargetLocation, button: MouseButton = 'left', clickType: MouseClick = 'single', smooth = true) {
     this.mouseController.click(location, button, clickType, smooth)
   }
 

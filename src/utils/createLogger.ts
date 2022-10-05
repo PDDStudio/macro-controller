@@ -9,7 +9,7 @@ ${info.level}: ${info.message}` : `${info.level}: ${info.message}`
 });
 
 
-const loggerDefaultFormat = (prefix: string = '') => combine(
+const loggerDefaultFormat = (prefix = '') => combine(
   colorize(),
   label({ label: prefix }),
   prettyPrint(),
