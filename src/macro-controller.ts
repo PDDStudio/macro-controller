@@ -31,7 +31,6 @@ export class MacroController {
    * @param options Options to customize the macro execution
    * @returns A promise that runs until the macro execution is finished or an error occurred.
    */
-  // @ts-ignore
   public executeMacro(macro: Macro, options?: MacroExecutionOptions): Promise<void | undefined> {
     // TODO: add validation & proper options to customize macro execution
     return this.macroExecutor.run(macro, options?.cancelCallback)

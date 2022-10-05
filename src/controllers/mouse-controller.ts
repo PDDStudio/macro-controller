@@ -15,7 +15,7 @@ export class MouseController {
     this.logger.debug('MouseController initialized!')
   }
 
-  public moveAround(speed: number = 2): void {
+  public moveAround(speed = 2): void {
     this.logger.info('moveAround: Preparing for mouse moveemnt ')
     robot.setMouseDelay(speed)
     const twoPi = Math.PI * 2.0
@@ -45,7 +45,7 @@ export class MouseController {
    * @param location The target location the mouse should be moved to
    * @param smooth  Whether the move animation should be smooth or instant
    */
-  public move(location: TargetLocation, smooth: boolean = true) {
+  public move(location: TargetLocation, smooth = true) {
     if(smooth) {
       robot.moveMouseSmooth(location.x, location.y)
     } else {

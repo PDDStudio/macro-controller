@@ -1,3 +1,4 @@
+/* eslint-disable */
 const Jimp = require('jimp')
 
 function screenCaptureToFile(robotScreenPic) {

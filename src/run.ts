@@ -1,12 +1,5 @@
-import { ScreenController } from '.'
 import robot from 'robotjs'
 import { createLogger, Logger } from './utils'
-
-function run(): void {
-  const sc = new ScreenController()
-  sc.printScreenInfo()
-  sc.capture(0, 0, 800, 600)
-}
 
 let prevPos = { x: 0, y: 0 }
 
@@ -26,8 +19,4 @@ function getMousePos(logger: Logger) {
   }, 1000)
 }
 
-// run();
-if(false) {
-  run()
-}
 queryMousePosition()
