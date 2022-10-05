@@ -14,7 +14,7 @@ export class ScriptLoader {
   }
 
   public async load(scriptLocation: string): Promise<Macro> {
-    const script: Macro = await yaml.safeLoad(fs.readFileSync(scriptLocation, { encoding: 'utf-8'})) as Macro
+    const script: Macro = await yaml.load(fs.readFileSync(scriptLocation, { encoding: 'utf-8'})) as Macro
     this.logger.info(`Loaded Script: ${script}`)
     return script
   }
